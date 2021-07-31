@@ -14,5 +14,8 @@ governing permissions and limitations under the License.
 // for each spec file, resulting in slow tests runs, high memory usage,
 // and file system errors.
 
+// Prevents the error `ReferenceError: regeneratorRuntime is not defined`
+import "regenerator-runtime/runtime";
+
 // eslint-disable-next-line import/no-unresolved,import/extensions
 import "./*/**/*.spec.js";

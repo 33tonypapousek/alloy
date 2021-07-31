@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ["airbnb-base", "prettier", "plugin:testcafe/recommended"],
+  extends: [
+    "airbnb-base",
+    "prettier",
+    "plugin:testcafe/recommended",
+    "plugin:import/typescript"
+  ],
   env: {
     browser: true,
     node: true,

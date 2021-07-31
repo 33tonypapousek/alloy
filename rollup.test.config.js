@@ -17,6 +17,7 @@ const commonjs = require("rollup-plugin-commonjs");
 const babel = require("rollup-plugin-babel");
 const istanbul = require("rollup-plugin-istanbul");
 const minimist = require("minimist");
+const typescript = require("@rollup/plugin-typescript");
 const ignorePatterns = require("./coverageignore");
 
 const argv = minimist(process.argv.slice(2));
@@ -29,6 +30,7 @@ const plugins = [
     mainFields: ["module", "main", "browser"]
   }),
   commonjs(),
+  typescript(),
   babel({
     envName: "rollup",
     configFile: path.resolve(__dirname, "babel.config.js")

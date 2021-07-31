@@ -69,6 +69,9 @@
     "@babel/plugin-transform-template-literals": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@octokit/rest": "^18.3.5",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@types/karma-jasmine": "^4.0.1",
+    "@typescript-eslint/parser": "^4.28.5",
     "babel-plugin-version": "^0.2.3",
     "bundlesize": "^0.18.0",
     "concurrently": "^5.3.0",
@@ -113,6 +116,8 @@
     "testcafe": "^1.12.0",
     "testcafe-browser-provider-saucelabs": "^1.8.1",
     "testcafe-reporter-testrail": "^0.6.3",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5",
     "ua-parser": "^0.3.5",
     "url-parse": "^1.4.7",
     "yargs": "^16.2.0"

@@ -52,7 +52,7 @@ recursive(srcDir, [shouldFileBeIgnored]).then(srcFiles => {
       return path.join(testDir, pathRelativeToTestDir);
     })
     .filter(testFile => {
-      return !fs.existsSync(testFile);
+      return !(fs.existsSync(testFile) || fs.existsSync(testFile.replace(".js", ".ts")));
     });
 
   if (missingTestFiles.length) {

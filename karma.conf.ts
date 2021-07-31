@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 const rollupConfig = require("./rollup.test.config");
 
-module.exports = config => {
+module.exports = (config: any) => {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: "",
@@ -24,7 +24,15 @@ module.exports = config => {
       {
         pattern: "test/unit/specs/karmaEntry.spec.js",
         watched: false // The preprocessor will use its own watcher
-      }
+      },
+      {
+        pattern: "test/unit/specs/*.spec.ts",
+        type: "js"
+      },
+      {
+        pattern: "test/unit/specs/*/**/*.spec.ts",
+        type: "js"
+      },
     ],
 
     // list of files to exclude
@@ -33,7 +41,9 @@ module.exports = config => {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      "test/unit/specs/karmaEntry.spec.js": ["rollup"]
+      "test/unit/specs/karmaEntry.spec.js": ["rollup"],
+      "test/unit/specs/*/**/*.spec.ts": ["rollup"],
+      "test/unit/specs/*.spec.ts": ["rollup"]
     },
 
     // test results reporter to use

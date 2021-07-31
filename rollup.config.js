@@ -16,6 +16,7 @@ import commonjs from "rollup-plugin-commonjs";
 import babel from "rollup-plugin-babel";
 import { terser } from "rollup-plugin-terser";
 import license from "rollup-plugin-license";
+import typescript from "@rollup/plugin-typescript";
 
 // Set these boolean environment options to control which files are built:
 // build the snippet that must be add to the page
@@ -39,6 +40,7 @@ const buildPlugins = (variant, minify) => {
       mainFields: ["module", "main", "browser"]
     }),
     commonjs(),
+    typescript(),
     babel({
       envName: "rollup",
       configFile: path.resolve(__dirname, "babel.config.js")
@@ -85,7 +87,7 @@ const buildConfig = (variant, minify) => {
 
   if (variant === BASE_CODE) {
     return {
-      input: "src/baseCode.js",
+      input: "src/baseCode/index.ts",
       output: [
         {
           file: `distTest/baseCode${minifiedExtension}.js`,

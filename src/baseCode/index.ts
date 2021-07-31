@@ -33,7 +33,7 @@ governing permissions and limitations under the License.
  * particularly sensitive to base code size.
  */
 
-export default (window, instanceNames) => {
+export default (window: Window, instanceNames: InstanceName[]) => {
   instanceNames.forEach(function(instanceName) {
     if (!window[instanceName]) {
       // __alloyNS stores a name of each "instance", or in other words, each
@@ -59,3 +59,21 @@ export default (window, instanceNames) => {
     }
   });
 };
+
+
+
+// Extend the Window interface to support alloy objects
+declare global {
+  interface Window { 
+    __alloyNS: string[];
+    [index: string]: any | Promise<any> | AlloyInstance // window[instanceName]. Remove `any` type in future.
+  }
+}
+
+// Likely unnecessary, but using a type alias for now, since
+// numbers and symbols can also be used for index signatures
+type InstanceName = string; // e.g. 'alloy', 'organizationTwo', etc
+
+interface AlloyInstance {
+  q: [][]; 
+}
